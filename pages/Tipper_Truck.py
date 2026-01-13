@@ -45,25 +45,25 @@ vehicle_filter = st.multiselect(
 filtered_df = df[df["truck_id"].isin(vehicle_filter)]
 st.dataframe(filtered_df.sort_values(["truck_id"]), use_container_width=True)
 
-# -------------------------
-# Whereabout update
-# -------------------------
-st.subheader("📍 Driver Whereabout Update (Auto-Save)")
+# # -------------------------
+# # Whereabout update
+# # -------------------------
+# st.subheader("📍 Driver Whereabout Update (Auto-Save)")
 
-with st.form("driver_update"):
-    vehicle = st.selectbox("Vehicle", df["truck_id"].unique())
-    location = st.text_input("Current Location / Site Code", placeholder="e.g. P201, P202, Depot")
-    status = st.selectbox("Status", ["Available", "Busy"])
-    remarks = st.text_input("Remarks")
-    submit = st.form_submit_button("Update Whereabout")
+# with st.form("driver_update"):
+#     vehicle = st.selectbox("Vehicle", df["truck_id"].unique())
+#     location = st.text_input("Current Location / Site Code", placeholder="e.g. P201, P202, Depot")
+#     status = st.selectbox("Status", ["Available", "Busy"])
+#     remarks = st.text_input("Remarks")
+#     submit = st.form_submit_button("Update Whereabout")
 
-if submit:
-    mask = df["truck_id"] == vehicle
-    if mask.any():
-        df.loc[mask, "current_location"] = location
-        df.loc[mask, "status"] = status
-        df.loc[mask, "remarks"] = remarks
-        df.loc[mask, "last_update"] = datetime.now(sg_timezone).strftime("%Y-%m-%d %H:%M")
-        save_table(df, "tipper_schedule")
-        st.success("✅ Whereabout updated and saved.")
+# if submit:
+#     mask = df["truck_id"] == vehicle
+#     if mask.any():
+#         df.loc[mask, "current_location"] = location
+#         df.loc[mask, "status"] = status
+#         df.loc[mask, "remarks"] = remarks
+#         df.loc[mask, "last_update"] = datetime.now(sg_timezone).strftime("%Y-%m-%d %H:%M")
+#         save_table(df, "tipper_schedule")
+#         st.success("✅ Whereabout updated and saved.")
 

@@ -45,25 +45,25 @@ vehicle_filter = st.multiselect(
 filtered_df = df[df["machine_id"].isin(vehicle_filter)]
 st.dataframe(filtered_df.sort_values(["machine_id"]), use_container_width=True)
 
-# -------------------------
-# Whereabout update
-# -------------------------
-st.subheader("📍 Operator Whereabout Update (Auto-Save)")
+# # -------------------------
+# # Whereabout update
+# # -------------------------
+# st.subheader("📍 Operator Whereabout Update (Auto-Save)")
 
-with st.form("operator_update"):
-    machine = st.selectbox("Machine", df["machine_id"].unique())
-    location = st.text_input("Current Location / Site Code", placeholder="e.g. Site A, Depot")
-    status = st.selectbox("Status", ["Available", "Busy"])
-    remarks = st.text_input("Remarks")
-    submit = st.form_submit_button("Update Whereabout")
+# with st.form("operator_update"):
+#     machine = st.selectbox("Machine", df["machine_id"].unique())
+#     location = st.text_input("Current Location / Site Code", placeholder="e.g. Site A, Depot")
+#     status = st.selectbox("Status", ["Available", "Busy"])
+#     remarks = st.text_input("Remarks")
+#     submit = st.form_submit_button("Update Whereabout")
 
-if submit:
-    mask = df["machine_id"] == machine
-    if mask.any():
-        df.loc[mask, "current_location"] = location
-        df.loc[mask, "status"] = status
-        df.loc[mask, "remarks"] = remarks
-        df.loc[mask, "last_update"] = datetime.now(sg_timezone).strftime("%Y-%m-%d %H:%M")
-        save_table(df, "machinery_schedule")
-        st.success("✅ Whereabout updated and saved.")
+# if submit:
+#     mask = df["machine_id"] == machine
+#     if mask.any():
+#         df.loc[mask, "current_location"] = location
+#         df.loc[mask, "status"] = status
+#         df.loc[mask, "remarks"] = remarks
+#         df.loc[mask, "last_update"] = datetime.now(sg_timezone).strftime("%Y-%m-%d %H:%M")
+#         save_table(df, "machinery_schedule")
+#         st.success("✅ Whereabout updated and saved.")
 

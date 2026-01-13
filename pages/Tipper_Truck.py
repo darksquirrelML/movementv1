@@ -78,8 +78,8 @@ if uploaded_file:
         df = pd.read_excel(uploaded_file)
 
         required_cols = {
-            "truck_id","plate_no"
-            "driver","current_location"
+            "truck_id","plate_no",
+            "driver","current_location",
             "status",
             "remarks",
             "last_update"

@@ -49,7 +49,7 @@ df = load_data()
 st.subheader("📋 Current Tipper Truck Status")
 st.dataframe(
     df[
-        ["vehicle_id", "plate_no", "driver",
+        ["truck_id", "plate_no", "driver",
          "current_site", "status", "remarks", "last_updated"]
     ],
     use_container_width=True

@@ -152,7 +152,7 @@ if available_now.empty:
 else:
     st.dataframe(
         available_now[
-            ["truck_id", "plate_no", "driver",
+            ["vehicle_id", "plate_no", "driver",
              "current_location", "time_start", "time_end", "remarks"]
         ],
         use_container_width=True

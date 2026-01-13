@@ -165,13 +165,13 @@ st.subheader("📅 Today's Pick-up Lorry Schedule")
 
 vehicle_filter = st.multiselect(
     "Filter by Vehicle",
-    df["truck_id"].unique(),
-    default=df["truck_id"].unique()
+    df["vehicle_id"].unique(),
+    default=df["vehicle_id"].unique()
 )
 
 st.dataframe(
-    df[df["truck_id"].isin(vehicle_filter)]
-    .sort_values(["truck_id", "time_start"]),
+    df[df["vehicle_id"].isin(vehicle_filter)]
+    .sort_values(["vehicle_id", "time_start"]),
     use_container_width=True
 )
 
@@ -181,14 +181,14 @@ st.dataframe(
 st.subheader("📍 Driver Whereabout Update")
 
 with st.form("update_form"):
-    vehicle = st.selectbox("Vehicle", df["truck_id"].unique())
+    vehicle = st.selectbox("Vehicle", df["vehicle_id"].unique())
     location = st.text_input("Current Location / Site Code")
     status = st.selectbox("Status", ["Available", "Busy"])
     remarks = st.text_input("Remarks")
     submit = st.form_submit_button("Update")
 
 if submit:
-    mask = df["truck_id"] == vehicle
+    mask = df["vehicle_id"] == vehicle
     df.loc[mask, "current_location"] = location
     df.loc[mask, "status"] = status
     df.loc[mask, "remarks"] = remarks

@@ -79,7 +79,7 @@ if uploaded_file:
 
         required_cols = {
             "truck_id","plate_no",
-            "driver","current_location",
+            "driver","location",
             "status",
             "remarks",
             "last_update"
